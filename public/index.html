@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=[];var v=false;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Dongle:wght@400;700&family=Single+Day&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: #ffe8f1;
+    background-image:
+      radial-gradient(circle at 12px 12px, rgba(255,255,255,0.7) 2px, transparent 2.5px),
+      repeating-linear-gradient(45deg, #ffe3ef 0 22px, #ffeef6 22px 44px);
+    background-size: 24px 24px, auto;
+  }
+  ::-webkit-scrollbar { width: 14px; }
+  ::-webkit-scrollbar-track { background: #ffe0ee; }
+  ::-webkit-scrollbar-thumb { background: #ff9ec4; border-radius: 10px; border: 3px solid #ffe0ee; }
+  @keyframes kumaBob { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-7px) } }
+  @keyframes kumaWiggle { 0%,100%{ transform: rotate(-4deg) } 50%{ transform: rotate(4deg) } }
+  @keyframes kumaBlink { 0%,92%,100%{ opacity: 1 } 96%{ opacity: 0.25 } }
+  @keyframes kumaMarquee { 0%{ transform: translateX(100%) } 100%{ transform: translateX(-100%) } }
+  @keyframes kumaSpin { 0%{ transform: rotate(0) } 100%{ transform: rotate(360deg) } }
+  @keyframes kumaPop { 0%{ transform: scale(0.4); opacity: 0 } 60%{ transform: scale(1.08) } 100%{ transform: scale(1); opacity: 1 } }
+  @keyframes kumaFloatUp { 0%{ transform: translateY(0) scale(1); opacity: 1 } 100%{ transform: translateY(-46px) scale(0.4) rotate(20deg); opacity: 0 } }
+  @keyframes kumaDrip { 0%{ transform: translateY(-6px); opacity: 0 } 30%{ opacity: 1 } 100%{ transform: translateY(10px); opacity: 0 } }
+  @keyframes kumaHappy { 0%,100%{ transform: translateY(0) } 30%{ transform: translateY(-16px) } 50%{ transform: translateY(0) } 70%{ transform: translateY(-7px) } 85%{ transform: translateY(0) } }
+  @keyframes kumaShake { 0%,100%{ transform: rotate(0) } 25%{ transform: rotate(-7deg) } 75%{ transform: rotate(7deg) } }
+  @keyframes kumaTremble { 0%,100%{ transform: translateX(0) } 20%{ transform: translateX(-3px) } 40%{ transform: translateX(3px) } 60%{ transform: translateX(-3px) } 80%{ transform: translateX(3px) } }
+  @keyframes kumaPopC { 0%{ transform: translateX(-50%) scale(0.3); opacity: 0 } 60%{ transform: translateX(-50%) scale(1.1) } 100%{ transform: translateX(-50%) scale(1); opacity: 1 } }
+  @media (max-width: 640px) {
+    .rk-shell { padding: 10px 8px 32px !important; }
+    .rk-banner { padding: 14px 16px !important; border-radius: 20px !important; }
+    .rk-title { font-size: 30px !important; }
+    .rk-charrow { width: 100%; justify-content: center; margin-top: 4px; }
+    .rk-body { flex-direction: column !important; gap: 12px !important; }
+    .rk-side { width: 100% !important; order: 2; }
+    .rk-mainwrap { width: 100%; min-width: 0 !important; flex-direction: column !important; }
+    .rk-index { flex-direction: row !important; flex-wrap: wrap; padding-top: 0 !important; gap: 5px !important; margin-bottom: 12px; order: -1; }
+    .rk-tab { writing-mode: horizontal-tb !important; text-orientation: mixed !important; letter-spacing: 1px !important; border-left: 3px solid #c47e36 !important; border-bottom: none !important; border-radius: 12px 12px 0 0 !important; margin-left: 0 !important; margin-bottom: -3px !important; z-index: auto !important; padding: 7px 14px !important; }
+  }
+</style>
+</helmet>
+
+<div class="rk-shell" style="font-family: 'Single Day', cursive; color: #7a5a48; min-height: 100vh; padding: 18px 12px 40px;">
+  <div style="max-width: 940px; margin: 0 auto;">
+
+    <!-- ===== BANNER ===== -->
+    <div class="rk-banner" style="position: relative; background: linear-gradient(135deg,#fff4fa 0%,#ffe1ee 60%,#ffd0e6 100%); border: 3px solid #ff9ec4; border-radius: 26px; padding: 22px 26px; box-shadow: 0 6px 0 #ffc2dc, 0 10px 24px rgba(255,140,180,0.25); overflow: hidden;">
+      <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+        <div style="line-height:1; animation: kumaBob 2.4s ease-in-out infinite; filter: drop-shadow(0 3px 2px rgba(0,0,0,.12));"><img src="assets/char_family.png" alt="리락쿠마와 친구들" style="width:140px; height:104px; object-fit:contain; display:block;"></div>
+        <div style="flex:1; min-width:200px;">
+          <div class="rk-title" style="font-family:'Gaegu',cursive; font-weight:700; font-size:46px; color:#ff6fa8; letter-spacing:1px; text-shadow:2px 2px 0 #fff, 3px 3px 0 #ffc2dc;">Rilakkuma's House</div>
+        </div>
+        <div class="rk-charrow" style="display:flex; align-items:center; gap:6px;">
+          <div style="animation: kumaBob 2.8s ease-in-out infinite;"><img src="assets/char_rilakkuma.png" alt="리락쿠마" style="width:56px; height:56px; object-fit:contain; display:block;"></div>
+          <div style="animation: kumaBob 2.8s ease-in-out infinite 0.2s;"><img src="assets/char_korilakkuma.png" alt="코리락쿠마" style="width:46px; height:46px; object-fit:contain; display:block;"></div>
+          <div style="animation: kumaBob 2.8s ease-in-out infinite 0.4s;"><img src="assets/char_kitori.png" alt="키이로이토리" style="width:42px; height:42px; object-fit:contain; display:block;"></div>
+          <div style="animation: kumaBob 2.8s ease-in-out infinite 0.6s;"><img src="assets/char_koguma.png" alt="차이로이코구마" style="width:44px; height:44px; object-fit:contain; display:block;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <!-- ===== BODY: sidebar + main ===== -->
+    <div class="rk-body" style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+
+      <!-- SIDEBAR -->
+      <div class="rk-side" style="width:228px; flex:none; display:flex; flex-direction:column; gap:14px;">
+        <!-- featured -->
+        <div style="background:#fffdfa; border:2px dashed #ffb3d1; border-radius:18px; padding:10px; box-shadow:0 4px 10px rgba(255,150,190,0.18);">
+          <div style="font-family:'Dongle',sans-serif; color:#ff7eb0; font-size:15px; text-align:center; margin-bottom:6px;">˚✦ 리락쿠마의 방 구경 ✦˚</div>
+          <img src="assets/rilakkuma1.gif" alt="room" style="width:100%; display:{{ show0 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/rilakkuma2.gif" alt="room" style="width:100%; display:{{ show1 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/rilakkuma3.gif" alt="room" style="width:100%; display:{{ show2 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room04.gif" alt="room" style="width:100%; display:{{ show3 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room05.gif" alt="room" style="width:100%; display:{{ show4 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room06.gif" alt="room" style="width:100%; display:{{ show5 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room07.gif" alt="room" style="width:100%; display:{{ show6 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room08.gif" alt="room" style="width:100%; display:{{ show7 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room09.gif" alt="room" style="width:100%; display:{{ show8 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room10.gif" alt="room" style="width:100%; display:{{ show9 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room11.gif" alt="room" style="width:100%; display:{{ show10 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room12.gif" alt="room" style="width:100%; display:{{ show11 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room13.gif" alt="room" style="width:100%; display:{{ show12 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <img src="assets/room14.jpeg" alt="room" style="width:100%; display:{{ show13 }}; border-radius:12px; image-rendering:pixelated; border:2px solid #ffd0e6;">
+          <div style="font-family:'Dongle',sans-serif; font-size:15px; color:#b07d4f; text-align:center; margin-top:6px;">{{ featuredCap }}</div>
+          <div style="text-align:center; margin-top:6px;">
+            <button onClick="{{ shuffleFeatured }}" style="font-family:'Dongle',sans-serif; font-size:12px; cursor:pointer; border:1.5px solid #ffb3d1; background:#fff0f7; color:#d4799f; border-radius:20px; padding:4px 12px;">다른 방 보기</button>
+          </div>
+        </div>
+
+        <!-- counter -->
+        <div style="background:#ffeef6; border:3px solid #ffb3d1; border-radius:16px; padding:12px; text-align:center; box-shadow:0 4px 0 #ffd9e8;">
+          <div style="font-family:'Dongle',sans-serif; font-weight:700; color:#ff7eb0; font-size:15px;">♡ 방문자 카운터 ♡</div>
+          <div style="display:inline-flex; gap:4px; margin-top:8px; background:#fff; padding:6px 8px; border-radius:10px; border:2px solid #ffd0e6;">
+            <sc-for list="{{ counterDigits }}" as="d" hint-placeholder-count="6">
+              <span style="font-family:'Dongle',sans-serif; font-weight:700; font-size:20px; color:#ff6fa8; background:#fff4fa; border:1.5px solid #ffc2dc; width:18px; text-align:center; border-radius:5px; box-shadow: inset 0 -2px 0 #ffe0ee;">{{ d }}</span>
+            </sc-for>
+          </div>
+          <div style="font-family:'Dongle',sans-serif; font-size:14px; color:#c98aa8; margin-top:7px;">당신은 소중한 손님이에요! ♡</div>
+        </div>
+
+      </div>
+
+      <!-- MAIN + INDEX TABS (notebook, tabs on the right) -->
+      <div class="rk-mainwrap" style="flex:1; min-width:300px; display:flex; align-items:flex-start; gap:0;">
+        <div style="flex:1; min-width:0;">
+
+        <!-- HOME -->
+        <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Gaegu',cursive; font-weight:700; color:#ff6fa8; font-size:26px; margin-bottom:2px;">리락쿠마의 집에 어서오세요!</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:18px; margin-bottom:14px;">여기는 리락쿠마의 사이버하우스입니다.</div>
+            <div style="text-align:center; margin:6px 0 16px;"><img src="assets/home_family_cut.png" alt="리락쿠마와 친구들" style="width:100%; max-width:340px; display:inline-block;"></div>
+          </div>
+        </sc-if>
+
+        <!-- CHARACTERS -->
+        <sc-if value="{{ showCharacters }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Gaegu',cursive; font-weight:700; color:#ff6fa8; font-size:24px;">가족 소개</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:2px 0 16px;">우리 친구들을 소개할게요!</div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <sc-for list="{{ characters }}" as="c" hint-placeholder-count="0">
+                <div style="display:flex; gap:14px; align-items:center; background:{{ c.bg }}; border:2px solid {{ c.border }}; border-radius:18px; padding:14px;">
+                  <div style="width:74px; height:74px; flex:none; border-radius:50%; background:#fff; border:2px solid {{ c.border }}; display:flex; align-items:center; justify-content:center; animation: kumaBob 2.8s ease-in-out infinite; overflow:hidden;">{{ c.avatarEl }}</div>
+                  <div style="flex:1;">
+                    <div style="display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;">
+                      <span style="font-family:'Dongle',sans-serif; font-size:19px; color:{{ c.name_color }};">{{ c.kr }}</span>
+                    </div>
+                    <div style="font-size:13px; line-height:1.65; color:#7a5a48; margin:4px 0 7px;">{{ c.desc }}</div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                      <sc-for list="{{ c.traits }}" as="t" hint-placeholder-count="3">
+                        <span style="font-family:'Dongle',sans-serif; font-size:13px; background:#fff; border:1.5px solid {{ c.border }}; color:{{ c.name_color }}; border-radius:20px; padding:2px 10px;">{{ t }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- LETTER -->
+        <sc-if value="{{ showLetter }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Dongle',sans-serif; font-weight:700; color:#ff6fa8; font-size:26px;">편지쓰기</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:0 0 14px;">좋아하는 친구에게 마음을 전해보세요</div>
+
+            <div style="margin:0 0 14px; font-family:'Dongle',sans-serif; font-size:15px; line-height:1.5; color:#a98c6a;">
+              <span style="font-weight:700; color:#c79a3e;">※ 집 주인의 메모</span><br>
+              리락쿠마에게 쓴 편지는 익명으로 전달되지만 내용은 모두가 확인할 수 있습니다. 개인정보에 주의해주세요!
+            </div>
+
+            <div style="font-size:13px; color:#c98aa8; margin-bottom:7px;">받는 친구를 골라주세요 ♡</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
+              <sc-for list="{{ letterPicks }}" as="p" hint-placeholder-count="0">
+                <button onClick="{{ p.pick }}" style="cursor:pointer; display:flex; align-items:center; gap:6px; font-family:'Dongle',sans-serif; font-size:13px; border:2px solid {{ p.border }}; background:{{ p.bg }}; color:{{ p.fg }}; border-radius:20px; padding:6px 12px;">
+                  {{ p.faceEl }}{{ p.kr }}
+                </button>
+              </sc-for>
+            </div>
+
+            <div style="position:relative; min-height:154px; border:2px solid #e6d6a4; border-radius:8px; background-color:#fffdf2; background-image: repeating-linear-gradient(#fffdf2 0px, #fffdf2 27px, #ece0bd 28px); box-shadow: 0 3px 0 #efe2bf, inset 0 0 0 2px #fff; overflow:hidden;">
+              <div style="position:absolute; top:0; bottom:0; left:34px; width:2px; background:rgba(255,150,170,0.35); z-index:1;"></div>
+              <textarea value="{{ letterText }}" onChange="{{ onLetterChange }}" placeholder="여기에 편지를 적어주세요... (예: 리락쿠마야, 오늘도 느긋하게 보내고 있니?)" style="position:relative; z-index:1; width:100%; height:140px; resize:none; border:none; background:transparent; outline:none; font-family:'Dongle',sans-serif; font-size:17px; line-height:28px; color:#6b5c3e; padding:7px 14px 7px 46px;"></textarea>
+              <sc-if value="{{ letterReply }}" hint-placeholder-val="{{ false }}">
+                <div onClick="{{ dismissReply }}" title="눌러서 닫기" style="position:absolute; inset:0; cursor:pointer; display:flex; align-items:center; justify-content:flex-end; gap:8px; padding:10px 12px; background:#fffdf2; border-radius:6px; opacity:{{ replyOpacity }}; transition: opacity .4s ease; z-index:2;">
+                  <div style="flex:1; position:relative; background:{{ replyBg }}; border:2.5px solid {{ replyBorder }}; border-radius:16px; padding:9px 13px; box-shadow:0 3px 7px rgba(120,160,140,0.2); animation: kumaPop .3s ease-out;">
+                    <div style="font-family:'Dongle',sans-serif; font-weight:700; color:{{ replyFg }}; font-size:15px;">{{ replyName }}</div>
+                    <div style="font-family:'Dongle',sans-serif; font-size:16px; line-height:1.4; color:#5a6a62;">{{ replyText }}</div>
+                    <div style="position:absolute; top:50%; right:-13px; transform:translateY(-50%); width:0; height:0; border-top:9px solid transparent; border-bottom:9px solid transparent; border-left:13px solid {{ replyBorder }};"></div>
+                    <div style="position:absolute; top:50%; right:-9px; transform:translateY(-50%); width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:10px solid {{ replyBg }};"></div>
+                  </div>
+                  <div style="flex:none; animation: kumaBob 2.2s ease-in-out infinite;">{{ replyEl }}</div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+              <button onClick="{{ sendLetter }}" style="cursor:pointer; font-family:'Dongle',sans-serif; font-weight:700; font-size:16px; border:2px solid {{ letterMid }}; background:{{ letterSoft }}; color:{{ letterStrong }}; border-radius:24px; padding:9px 26px; transition:transform .12s;" style-active="transform:translateY(2px);">편지 보내기</button>
+              <span style="font-family:'Dongle',sans-serif; font-size:14px; color:#bba;">지금까지 보낸 편지: {{ lettersSent }}통</span>
+            </div>
+
+            <!-- 받은 편지 게시판 (스티커 벽) -->
+            <div style="margin-top:20px; border-top:3px dotted #ffc2dc; padding-top:16px;">
+              <div style="font-family:'Dongle',sans-serif; font-weight:700; color:#ff7eb0; font-size:23px;">받은 편지 게시판</div>
+              <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:0 0 12px;">친구 얼굴을 누르면 편지가 보여요 · 총 {{ letterCount }}통</div>
+              <div style="position:relative; background:#ffeef6; background-image: radial-gradient(circle at 9px 9px, rgba(255,255,255,0.75) 3px, transparent 3.5px); background-size:18px 18px; border:4px solid #ffb3d1; border-radius:18px; box-shadow: inset 0 0 0 3px #fff, 0 4px 0 #ffd9e8; padding:20px 16px; display:flex; flex-wrap:wrap; gap:16px 18px; justify-content:center; min-height:110px;">
+                <sc-if value="{{ noLetters }}" hint-placeholder-val="{{ true }}">
+                  <div style="align-self:center; text-align:center; font-family:'Dongle',sans-serif; color:#d8a0bd; font-size:17px;">아직 편지가 없어요. 첫 편지를 남겨보세요! ♡</div>
+                </sc-if>
+                <sc-for list="{{ pageLetters }}" as="l" hint-placeholder-count="0">
+                  <div data-note="1" style="position:relative; display:flex; flex-direction:column; align-items:center;">
+                    <div onClick="{{ l.toggle }}" style="cursor:pointer; width:64px; height:64px; border-radius:50%; background:#fff; border:3px solid #ffc2dc; box-shadow:0 3px 0 #ffd9e8; display:flex; align-items:center; justify-content:center; overflow:hidden; transform:rotate({{ l.rot }}); transition: transform .15s;" style-hover="transform:rotate(0deg) translateY(-3px);">{{ l.faceEl }}</div>
+                    <sc-if value="{{ l.open }}" hint-placeholder-val="{{ false }}">
+                      <div style="position:absolute; bottom:74px; left:50%; transform:translateX(-50%); width:186px; z-index:6; background:#fffdf3; border:2.5px solid #ffce5e; border-radius:13px; padding:10px 13px; box-shadow:0 6px 15px rgba(180,150,90,0.3); animation: kumaPopC .22s ease-out;">
+                        <div style="font-family:'Dongle',sans-serif; color:#bba98a; font-size:13px; margin-bottom:3px;">{{ l.time }}</div>
+                        <div style="font-family:'Dongle',sans-serif; font-size:16px; line-height:1.5; color:#6b5c3e; white-space:pre-wrap;">{{ l.text }}</div>
+                        <sc-if value="{{ l.isMine }}" hint-placeholder-val="{{ false }}">
+                          <div style="text-align:right; margin-top:7px;"><button onClick="{{ l.del }}" style="cursor:pointer; font-family:'Dongle',sans-serif; font-size:14px; border:1.5px solid #ffb3c2; background:#fff0f3; color:#e06a86; border-radius:9px; padding:3px 12px;">내 편지 삭제</button></div>
+                        </sc-if>
+                        <div style="position:absolute; bottom:-13px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:11px solid transparent; border-right:11px solid transparent; border-top:13px solid #ffce5e;"></div>
+                        <div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:10px solid #fffdf3;"></div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ showPager }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:6px; justify-content:center; margin-top:12px;">
+                  <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="0">
+                    <button onClick="{{ pg.go }}" style="cursor:pointer; font-family:'Dongle',sans-serif; font-weight:700; font-size:15px; min-width:30px; height:30px; border:2px solid #ffb3d1; border-radius:9px; background:{{ pg.bg }}; color:{{ pg.fg }}; box-shadow:0 2px 0 #ffd9e8;">{{ pg.n }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- GIFT -->
+        <sc-if value="{{ showGift }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Gaegu',cursive; font-weight:700; color:#ff6fa8; font-size:24px;">선물하기</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:2px 0 14px;">친구마다 좋아하는 선물이 달라요! 탭해서 줘보세요</div>
+
+            <!-- character face tabs -->
+            <div style="display:flex; gap:5px; align-items:flex-end; padding-left:4px;">
+              <sc-for list="{{ giftPicks }}" as="p" hint-placeholder-count="0">
+                <button onClick="{{ p.pick }}" style="cursor:pointer; font-family:'Gaegu',cursive; font-weight:700; font-size:14px; border:none; border-radius:13px 13px 0 0; padding:{{ p.tabPad }}; background:{{ p.tabBg }}; color:{{ p.tabFg }}; position:relative; z-index:{{ p.tabZ }}; transition: padding .12s;">{{ p.kr }}</button>
+              </sc-for>
+            </div>
+
+            <!-- unified per-character gift panel -->
+            <div style="background:{{ giftSoft }}; border-radius:0 14px 14px 14px; padding:16px;">
+
+            <!-- STAGE: tap a gift below to give it -->
+            <div style="position:relative; border:3px dashed {{ giftMid }}; border-radius:16px; background:linear-gradient(#fffef9,{{ giftSoft }}); min-height:300px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; overflow:hidden;">
+              <sc-if value="{{ giftReply }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); width:84%; text-align:center; background:{{ bubbleBg }}; border:2.5px solid {{ bubbleBorder }}; border-radius:18px; padding:11px 15px; box-shadow:0 4px 10px rgba(150,130,90,0.2); animation: kumaPopC .3s ease-out; opacity:{{ giftOpacity }}; transition: opacity .4s ease; z-index:3;">
+                  <div style="font-family:'Gaegu',cursive; font-weight:700; color:{{ bubbleFg }}; font-size:16px;">{{ giftReplyName }} <span style="font-size:12px;">· {{ giftReactLabel }}</span></div>
+                  <div style="font-family:'Dongle',sans-serif; font-size:16px; line-height:1.45; color:#6a5e44;">{{ giftReplyText }}</div>
+                  <div style="position:absolute; bottom:-14px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:12px solid transparent; border-right:12px solid transparent; border-top:14px solid {{ bubbleBorder }};"></div>
+                  <div style="position:absolute; bottom:-9px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-top:11px solid {{ bubbleBg }};"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ showDropHint }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute; top:18px; left:50%; transform:translateX(-50%); font-family:'Dongle',sans-serif; font-size:16px; color:{{ giftStrong }}; text-align:center;">아래 선물을 탭해서 이 친구에게 줘보세요! ✦</div>
+              </sc-if>
+              <div style="animation:{{ stageAnim }};">{{ giftStageEl }}</div>
+            </div>
+
+            <div style="font-size:14px; color:#9a8a5a; margin:16px 0 7px; font-family:'Dongle',sans-serif;">② 선물을 골라 탭해주세요</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(82px,1fr)); gap:10px;">
+              <sc-for list="{{ gifts }}" as="g" hint-placeholder-count="9">
+                <button onClick="{{ g.pick }}" style="cursor:pointer; display:flex; align-items:center; justify-content:center; height:52px; padding:4px 6px; border:2px solid {{ g.border }}; background:{{ g.bg }}; border-radius:16px; transition:transform .12s;" style-hover="transform:translateY(-3px);">
+                  <span style="font-family:'Gaegu',cursive; font-weight:700; font-size:15px; line-height:1.1; text-align:center; color:{{ g.fg }};">{{ g.name }}</span>
+                </button>
+              </sc-for>
+            </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- GALLERY -->
+        <sc-if value="{{ showGallery }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Gaegu',cursive; font-weight:700; color:#ff6fa8; font-size:24px;">방 구경</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:2px 0 16px;">리락쿠마와 친구들의 작은 방들을 구경해요</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px;">
+              <sc-for list="{{ gallery }}" as="room" hint-placeholder-count="0">
+                <div style="background:#fff4fa; border:2px solid #ffd0e6; border-radius:16px; padding:8px; text-align:center;">
+                  {{ room.imgEl }}
+                  <div style="font-family:'Dongle',sans-serif; font-size:15px; color:#b07d4f; margin-top:6px;">{{ room.cap }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- GUESTBOOK -->
+        <sc-if value="{{ showGuest }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fffdfa; border:3px solid #ffb3d1; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffd9e8;">
+            <div style="font-family:'Gaegu',cursive; font-weight:700; color:#ff6fa8; font-size:24px;">방명록</div>
+            <div style="font-family:'Dongle',sans-serif; color:#c98aa8; font-size:16px; margin:2px 0 14px;">다녀가면 한 줄 남겨주세요 ♡</div>
+            <div style="display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap;">
+              <input ref="{{ guestNameRef }}" placeholder="이름" style="width:90px; flex:none; font-family:'Dongle',sans-serif; font-size:16px; border:2px solid #ffc2dc; border-radius:10px; padding:8px 10px; outline:none; color:#7a5a48; background:#fff;">
+              <input ref="{{ guestTextRef }}" onKeyDown="{{ onGuestKey }}" placeholder="한마디 남기기..." style="flex:1; min-width:150px; font-family:'Dongle',sans-serif; font-size:16px; border:2px solid #ffc2dc; border-radius:10px; padding:8px 10px; outline:none; color:#7a5a48; background:#fff;">
+              <button onClick="{{ addGuest }}" style="font-family:'Dongle',sans-serif; font-weight:700; font-size:15px; cursor:pointer; border:none; background:#ff8fc0; color:#fff; border-radius:10px; padding:0 16px; box-shadow:0 3px 0 #e36ba0;" style-active="transform:translateY(2px); box-shadow:0 1px 0 #e36ba0;">남기기</button>
+            </div>
+            <sc-if value="{{ noGuests }}" hint-placeholder-val="{{ true }}">
+              <div style="text-align:center; font-family:'Dongle',sans-serif; color:#d8a0bd; font-size:17px; padding:18px 0;">아직 방명록이 비어있어요. 첫 손님이 되어주세요! ♡</div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <sc-for list="{{ guests }}" as="g" hint-placeholder-count="0">
+                <div style="display:flex; gap:9px; align-items:flex-start; background:#fff4fa; border:2px solid #ffd0e6; border-radius:12px; padding:9px 11px;">
+                  <div style="width:34px; height:34px; flex:none; border-radius:50%; background:#fff; border:2px solid #ffc2dc; overflow:hidden; display:flex; align-items:center; justify-content:center;">{{ g.faceEl }}</div>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-family:'Dongle',sans-serif; font-weight:700; color:#e2568f; font-size:16px;">{{ g.name }} <span style="color:#caa; font-weight:400; font-size:14px;">· {{ g.time }}</span></div>
+                    <div style="font-family:'Single Day',cursive; color:#7a5a48; font-size:15px; line-height:1.5; word-break:break-word;">{{ g.text }}</div>
+                  </div>
+                  <sc-if value="{{ g.isMine }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ g.del }}" title="내가 쓴 글 삭제" style="flex:none; cursor:pointer; font-family:'Dongle',sans-serif; font-size:13px; border:1.5px solid #ffc2dc; background:#fff; color:#d4799f; border-radius:8px; padding:3px 8px;">삭제</button>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- FORTUNE -->
+        <sc-if value="{{ showFortune }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <!-- 오미쿠지 -->
+            <div style="background:#fffdfa; border:3px solid #ffd86b; border-radius:22px; padding:22px; box-shadow:0 6px 0 #ffe9b0; text-align:center;">
+              <div style="font-family:'Gaegu',cursive; font-weight:700; color:#e3a13a; font-size:24px;">오늘의 리락쿠마</div>
+              <div style="font-family:'Dongle',sans-serif; color:#cda85a; font-size:16px; margin:2px 0 14px;">하루 한 번, 콕 뽑아보세요</div>
+              <div style="background:#fffef6; border:2px dashed #ffd86b; border-radius:14px; padding:18px 14px;">
+                <div style="animation:kumaBob 2.6s infinite;"><img src="assets/char_rilakkuma.png" alt="" style="width:84px;"></div>
+                <div style="font-family:'Gaegu',cursive; font-weight:700; color:#e3a13a; font-size:32px; margin:6px 0 4px;">{{ fortuneGrade }}</div>
+                <div style="font-family:'Single Day',cursive; color:#8a6a3a; font-size:17px; line-height:1.5;">{{ fortuneText }}</div>
+              </div>
+              <button onClick="{{ rollFortune }}" style="font-family:'Dongle',sans-serif; font-weight:700; font-size:16px; cursor:pointer; border:none; background:#ffc04d; color:#fff; border-radius:14px; padding:9px 26px; box-shadow:0 4px 0 #e3a13a; margin-top:14px;" style-active="transform:translateY(2px); box-shadow:0 2px 0 #e3a13a;">다시 뽑기</button>
+            </div>
+            <!-- 오늘의 한마디 -->
+            <div style="background:#fffdfa; border:3px solid #9fe6c6; border-radius:22px; padding:22px; box-shadow:0 6px 0 #d2f3e4;">
+              <div style="font-family:'Gaegu',cursive; font-weight:700; color:#3fb888; font-size:24px;">오늘의 한마디</div>
+              <div style="font-family:'Dongle',sans-serif; color:#7cc3a3; font-size:16px; margin:2px 0 14px;">리락쿠마가 건네는 말 ♡</div>
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <div style="flex:none; animation:kumaWiggle 2.4s ease-in-out infinite;"><img src="assets/char_korilakkuma.png" alt="" style="width:74px;"></div>
+                <div style="flex:1; position:relative; background:#eafaf2; border:2.5px solid #9fe6c6; border-radius:16px; padding:12px 14px; margin-top:8px;">
+                  <div style="font-family:'Single Day',cursive; color:#5a7a6a; font-size:17px; line-height:1.55;">{{ wordText }}</div>
+                  <div style="position:absolute; top:18px; left:-13px; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-right:13px solid #9fe6c6;"></div>
+                  <div style="position:absolute; top:18px; left:-9px; width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent; border-right:10px solid #eafaf2;"></div>
+                </div>
+              </div>
+              <button onClick="{{ rollWord }}" style="display:block; width:100%; font-family:'Dongle',sans-serif; font-weight:700; font-size:16px; cursor:pointer; border:none; background:#6dd4aa; color:#fff; border-radius:14px; padding:9px 0; box-shadow:0 4px 0 #3fb888; margin-top:14px;" style-active="transform:translateY(2px); box-shadow:0 2px 0 #3fb888;">또 듣기</button>
+            </div>
+          </div>
+        </sc-if>
+
+        </div>
+        <!-- VERTICAL INDEX TABS (right side, vertical text) -->
+        <div class="rk-index" style="display:flex; flex-direction:column; gap:7px; padding-top:18px; flex:none;">
+          <sc-for list="{{ menu }}" as="m" hint-placeholder-count="5">
+            <button onClick="{{ m.go }}" class="rk-tab" style="writing-mode:vertical-rl; text-orientation:upright; font-family:'Gaegu',cursive; font-weight:700; font-size:17px; letter-spacing:3px; cursor:pointer; border:3px solid #c47e36; border-left:none; border-radius:0 13px 13px 0; padding:{{ m.pad }}; background:{{ m.bg }}; color:{{ m.fg }}; position:relative; z-index:{{ m.z }}; margin-left:{{ m.ml }}; box-shadow:3px 1px 4px rgba(150,100,50,0.16); transition: margin .12s, padding .12s;">{{ m.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    tab: 'home',
+    featuredIdx: 0,
+    bgmOn: false,
+    letterRecipient: 'rilakkuma',
+    letterText: '',
+    reply: null,
+    lettersSent: 0,
+    letters: [],
+    boardPage: 0,
+    openNote: null,
+    replyOpacity: 1,
+    giftOpacity: 1,
+    mine: {},
+    guests: [],
+    guestName: '',
+    guestText: '',
+    guestMine: {},
+    fortuneIdx: 0,
+    wordIdx: 0,
+    giftRecipient: 'rilakkuma',
+    giftReply: null,
+    reacting: false,
+    visits: 0,
+    letterTotal: 0,
+    letterPages: 1,
+  };
+
+  THEME = {
+    rilakkuma:     { soft: '#f8efda', mid: '#e3c285', strong: '#c2913f', deep: '#a87a2e', shadow: '#f0e2c2' },
+    korilakkuma:   { soft: '#fdeaf2', mid: '#f4afcb', strong: '#e36ba0', deep: '#c9558a', shadow: '#ffd9e8' },
+    kiiroitori:    { soft: '#fff6cf', mid: '#f2cf5a', strong: '#d99e2b', deep: '#bd8718', shadow: '#ffe7a0' },
+    chairoikoguma: { soft: '#ecdac4', mid: '#bb8453', strong: '#8a4f24', deep: '#6e3d18', shadow: '#e2cdb0' },
+  };
+
+  FORTUNES = [
+    { g: '大吉 대길', t: '오늘은 느긋하게 쉬기 딱 좋은 날. 좋아하는 간식과 함께라면 더 좋아요!' },
+    { g: '中吉 중길', t: '서두르지 않으면 좋은 일이 살며시 찾아와요. 한 박자 천천히!' },
+    { g: '小吉 소길', t: '작은 행운이 굴러올 거예요. 낮잠 한숨이 운을 불러와요.' },
+    { g: '吉 길', t: '무난하고 포근한 하루. 따뜻한 코코아 한 잔 어때요?' },
+    { g: '末吉 말길', t: '천천히 풀려요. 조급해 말고 뒹굴뒹굴 기다려봐요.' },
+    { g: '大吉 대길', t: '뒹굴뒹굴 운수대통! 오늘은 하고 싶은 대로 해도 좋아요.' },
+    { g: '中吉 중길', t: '소중한 사람에게 연락해보세요. 마음이 몽글몽글해질 거예요.' },
+    { g: '小吉 소길', t: '잃어버린 물건을 찾을 수도. 방 정리하다 보면 좋은 일이!' },
+  ];
+  WORDS = [
+    '무리하지 말고, 오늘도 천천히. 너의 속도면 충분해요.',
+    '잘 쉬는 것도 아주 중요한 일이에요. 푹 쉬어요 ♡',
+    '오늘 하루도 애썼어요. 등 지퍼 열고 한숨 자요~',
+    '느긋하게 가도 괜찮아요. 우리는 늘 여기 있을게요.',
+    '작은 일에도 웃을 수 있는 하루가 되길 바라요.',
+    '배고프면 일단 간식! 그래야 기운이 나요.',
+    '비교하지 말아요. 너는 너라서 좋은 거예요.',
+    '오늘도 와줘서 고마워요. 내일도 놀러 와요 ♡',
+  ];
+
+  componentDidMount() {
+    // 내 글 삭제키(localStorage)만 브라우저에 유지 — 편지/방명록/방문자수는 서버에서 가져와요
+    let mine = {};
+    try { mine = JSON.parse(localStorage.getItem('kuma_mine') || '{}') || {}; if (Array.isArray(mine)) mine = {}; } catch (_) {}
+    let guestMine = {};
+    try { guestMine = JSON.parse(localStorage.getItem('kuma_guest_mine') || '{}') || {}; if (Array.isArray(guestMine)) guestMine = {}; } catch (_) {}
+    const sent = parseInt(localStorage.getItem('kuma_letters') || '0', 10) || 0;
+    const fortuneIdx = Math.floor(Math.random() * this.FORTUNES.length);
+    const wordIdx = Math.floor(Math.random() * this.WORDS.length);
+    this.setState({ lettersSent: sent, mine, guestMine, fortuneIdx, wordIdx });
+
+    // 서버에서 실제 데이터 불러오기
+    this.countVisit();
+    this.loadLetters(0);
+    this.loadGuests();
+
+    // preload character idle/reaction/face images so gift reactions swap instantly
+    const pre = [];
+    this.CHARS.forEach(c => { pre.push(c.idle, c.react_good, c.react_bad, c.face, c.img); });
+    pre.push('assets/char_trail1.png', 'assets/char_trail2.png', 'assets/char_trail3.png', 'assets/char_trail4.png');
+    pre.forEach(src => { if (src) { const im = new Image(); im.src = src; } });
+
+    // cursor sparkle trail
+    this._last = 0;
+    this._trails = ['assets/char_trail1.png', 'assets/char_trail2.png', 'assets/char_trail3.png', 'assets/char_trail4.png'];
+    this._sparkles = ['♡', '✦', '✧', '⋆', '₊', '˖', '✩', '★'];
+    this._onMove = (e) => {
+      const now = Date.now();
+      if (now - this._last < 90) return;
+      this._last = now;
+      let el;
+      if (Math.random() < 0.5) {
+        el = document.createElement('img');
+        el.src = this._trails[Math.floor(Math.random() * this._trails.length)];
+        const sz = 20 + Math.random() * 8;
+        el.style.cssText = 'position:fixed;left:' + e.clientX + 'px;top:' + e.clientY + 'px;width:' + sz + 'px;height:' + sz + 'px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%) rotate(' + (Math.random() * 30 - 15) + 'deg);animation:kumaFloatUp 1s ease-out forwards;';
+      } else {
+        el = document.createElement('span');
+        el.textContent = this._sparkles[Math.floor(Math.random() * this._sparkles.length)];
+        el.style.cssText = 'position:fixed;left:' + e.clientX + 'px;top:' + e.clientY + 'px;color:#ff9ec4;pointer-events:none;z-index:9999;font-size:' + (11 + Math.random() * 9) + 'px;transform:translate(-50%,-50%);animation:kumaFloatUp .9s ease-out forwards;';
+      }
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1050);
+    };
+    window.addEventListener('mousemove', this._onMove);
+
+    // click anywhere (outside an open note) closes the letter popup
+    this._docClick = (e) => {
+      if (this.state.openNote && !(e.target.closest && e.target.closest('[data-note]'))) {
+        this.setState({ openNote: null });
+      }
+    };
+    document.addEventListener('click', this._docClick);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    document.removeEventListener('click', this._docClick);
+  }
+
+  CHARS = [
+    { id: 'rilakkuma', kr: '리락쿠마', emoji: '', img: 'assets/char_rilakkuma.png', idle: 'assets/idle3.webp', react_good: 'assets/react_rila_good.png', react_bad: 'assets/react_rila_bad.png', face: 'assets/char_trail2.png',
+      bg: '#f6ead9', border: '#d9b483', name_color: '#b07d4f',
+      desc: '어느 날 갑자기 카오루 씨 집에 굴러들어온 게으름뱅이 곰. 등에는 지퍼가 달려있고, 좋아하는 건 낮잠과 따끈한 간식이에요.',
+      traits: ['느긋함', '낮잠 대장', '등에 지퍼'] },
+    { id: 'korilakkuma', kr: '코리락쿠마', emoji: '', img: 'assets/char_korilakkuma.png', idle: 'assets/idle4.webp', react_good: 'assets/react_kori_good.png', react_bad: 'assets/react_kori_bad.png', face: 'assets/char_trail4.png',
+      bg: '#fdeaf2', border: '#f4afcb', name_color: '#e36ba0',
+      desc: '어디선가 나타난 하얀 아기 곰. 장난치는 걸 제일 좋아하고, 가슴의 빨간 단추가 포인트예요.',
+      traits: ['장난꾸러기', '빨간 단추', '호기심쟁이'] },
+    { id: 'kiiroitori', kr: '키이로이토리', emoji: '', img: 'assets/char_kitori.png', idle: 'assets/idle1.webp', react_good: 'assets/react_kito_good.png', react_bad: 'assets/react_kito_bad.gif', face: 'assets/char_kitori.png',
+      bg: '#fff6cf', border: '#f2cf5a', name_color: '#d99e2b',
+      desc: '원래 카오루 씨가 키우던 새. 야무지고 부지런해서 게으른 리락쿠마에게 잔소리도 해요. 저금이 취미랍니다.',
+      traits: ['야무짐', '청소 담당', '저금통 사랑'] },
+    { id: 'chairoikoguma', kr: '차이로이코구마', emoji: '', img: 'assets/char_koguma.png', idle: 'assets/idle2.webp', react_good: 'assets/react_koguma_good.png', react_bad: 'assets/react_koguma_good.png', face: 'assets/char_koguma.png',
+      bg: '#efe0cd', border: '#c9a878', name_color: '#8c5a34',
+      desc: '곱슬곱슬한 둥근 귀를 가진 갈색 아기 곰. 호기심이 많고 사진 찍는 걸 좋아하는 막내예요.',
+      traits: ['곱슬 귀', '카메라 좋아', '막내'] },
+  ];
+
+  GIFT_CATALOG = {
+    rilakkuma: [
+      { name: '쓰다듬기', type: 'good', text: '쓰담쓰담… 아~ 기분 좋아요. 그대로 스르륵 잠들 것 같아요 ♡' },
+      { name: '핫케이크', type: 'good', text: '와아… 폭신폭신 핫케이크다. 천천히 음미할게요 ♡' },
+      { name: '오므라이스', type: 'good', text: '오므라이스! 케첩으로 그림 그리고 먹어야지… 헤헤' },
+      { name: '푸딩', type: 'good', text: '푸딩은 흔들흔들~ 보고만 있어도 행복해요.' },
+      { name: '경단', type: 'good', text: '말랑말랑 경단… 셋이 나눠 먹을까요? 냠냠' },
+      { name: 'TV', type: 'good', text: 'TV 보면서 뒹굴뒹굴… 이게 최고의 휴식이에요~' },
+      { name: '음악 감상', type: 'good', text: '느긋한 음악 들으니 스르륵 잠이 와요… (꾸벅)' },
+      { name: '온천', type: 'good', text: '아~ 온천이다. 어깨까지 폭 담그고 노곤노곤…' },
+      { name: '비디오 게임', type: 'good', text: '게임 한 판? 져도 괜찮아요. 느긋하게 즐겨요~' },
+      { name: '노란색 이불', type: 'good', text: '노란 이불 속은 세상에서 제일 포근해요… zzz' },
+      { name: '매운 음식', type: 'dislike', text: '으앗, 매워매워! 리락쿠마는 매운 건 잘 못 먹어요…' },
+      { name: '여름', type: 'dislike', text: '더운 여름은 힘들어요… 그늘에서 축 늘어질래요.' },
+    ],
+    korilakkuma: [
+      { name: '쓰다듬기', type: 'good', text: '에헤헤~ 쓰담쓰담 받으니까 기분 좋아! 한 번 더 해줘!' },
+      { name: '딸기', type: 'good', text: '빨간 딸기! 코리락쿠마가 제일 좋아하는 거야! 꺄르르' },
+      { name: '사과', type: 'good', text: '사과 한 입 아삭! 새콤달콤 맛있다 헤헤' },
+      { name: '체리', type: 'good', text: '체리 두 개를 귀에 걸고 장난칠 거야! 봐봐~' },
+      { name: '장난', type: 'good', text: '우헤헤, 같이 장난칠 사람 찾았다! 신난다!' },
+      { name: '장난감', type: 'good', text: '새 장난감이다! 하루 종일 가지고 놀 거야!' },
+      { name: '놀이', type: 'good', text: '같이 놀자 놀자! 숨바꼭질부터 시작!' },
+      { name: '하드 록 감상', type: 'good', text: '쿵쿵 하드 록! 머리 흔들흔들~ 완전 신나!' },
+      { name: '번개', type: 'scared', text: '꺄악! 번쩍번쩍 번개 무서워! 이불 속에 숨을래!' },
+      { name: '유령', type: 'scared', text: '우으… 유, 유령? 리락쿠마 뒤에 숨을 거야!' },
+    ],
+    kiiroitori: [
+      { name: '쓰다듬기', type: 'good', text: '짹! 머리를 살살 쓰다듬어 주니 깃털이 보송보송해져요~' },
+      { name: '청소', type: 'good', text: '깨끗하게 청소! 역시 정리된 방이 최고예요. 짹!' },
+      { name: '저금', type: 'good', text: '짤랑짤랑 저금통에 쏙! 부자 되는 기분이에요!' },
+      { name: '개', type: 'dislike', text: '머, 멍멍이?! 무서워요… 저리 가세요, 짹짹!' },
+    ],
+    chairoikoguma: [
+      { name: '쓰다듬기', type: 'good', text: '와아~ 쓰담쓰담! 곱슬 귀가 간질간질 기분 좋아요! 헤헤' },
+      { name: '벌꿀', type: 'good', text: '꿀이다! 끈적끈적 달콤~ 곱슬 귀가 쫑긋!' },
+      { name: '생선', type: 'good', text: '생선! 사진 먼저 찍고 먹을래요. 찰칵- 냠냠' },
+      { name: '사과', type: 'good', text: '빨간 사과 반짝반짝! 한 입 아삭, 맛있어요!' },
+    ],
+  };
+
+  REACT = {
+    good:    { bg: '#fff8e7', bd: '#ffd86b', fg: '#e3a13a', label: '기뻐해요!',   anim: 'kumaHappy 0.5s ease-in-out 2' },
+    dislike: { bg: '#eef0f2', bd: '#ccced6', fg: '#82828e', label: '싫어해요…',   anim: 'kumaShake 0.4s ease-in-out 3' },
+    scared:  { bg: '#eaf2ff', bd: '#a9d2ff', fg: '#5b8fd6', label: '무서워해요!', anim: 'kumaTremble 0.22s linear 6' },
+  };
+
+  GALLERY = [
+    { src: 'assets/rilakkuma1.gif', cap: '딸기 티파티 방' },
+    { src: 'assets/rilakkuma2.gif', cap: '여름 하와이 방' },
+    { src: 'assets/rilakkuma3.gif', cap: '비 오는 날 개구리 방' },
+    { src: 'assets/room04.gif', cap: '물방울 거실 방' },
+    { src: 'assets/room05.gif', cap: '친구들 서랍장 방' },
+    { src: 'assets/room06.gif', cap: '아이스크림 가게 방' },
+    { src: 'assets/room07.gif', cap: '과일 가게 방' },
+    { src: 'assets/room08.gif', cap: '해바라기 텃밭 방' },
+    { src: 'assets/room09.gif', cap: '봄날 다다미 방' },
+    { src: 'assets/room10.gif', cap: '음악실 방' },
+    { src: 'assets/room11.gif', cap: '별이 빛나는 밤 방' },
+    { src: 'assets/room12.gif', cap: '두근두근 하트 방' },
+    { src: 'assets/room13.gif', cap: '하얀 장미정원 방' },
+    { src: 'assets/room14.jpeg', cap: '다같이 잠자는 방' },
+  ];
+
+  UPDATES = [
+    { date: "6/21 22:34", text: "사이트 정식 오픈! 모두 환영해요 ♡" },
+    { date: "6/21 21:10", text: "편지쓰기 · 선물하기 코너 추가했어요" },
+    { date: "6/21 18:03", text: "갤러리에 방 3개를 올렸어요!" },
+  ];
+
+  LETTER_REPLIES = {
+    rilakkuma: [
+      '고마워요… (하품) 답장은 낮잠 자고 천천히 쓸게요...',
+      '편지 읽으니 마음이 몽글몽글… 같이 뒹굴뒹굴 할래요?',
+      '느긋하게 잘 지내고 있어요. 당신도 무리하지 말아요 ♡',
+      '음… 답장 쓰려다 깜빡 졸았어요. 다시 읽어볼게요…',
+      '오늘은 간식 먹고 등 지퍼 열어 한숨 잤어요. 편지 고마워요~',
+      '서두르지 않아도 괜찮아요. 천천히, 느긋하게가 제일이에요.',
+      '따뜻한 편지네요… 읽다가 또 노곤노곤 졸려요 (꾸벅)',
+      '이불 속에서 뒹굴며 또 읽을게요. 다음에 또 써줘요~',
+    ],
+    korilakkuma: [
+      '우와 편지다! 답장으로 장난 한 번 쳐도 돼요?',
+      '꺄르르~ 너무 좋아! 다음엔 같이 숨바꼭질 하자!',
+      '빨간 단추 걸고 약속! 또 편지 써줘요 ♡',
+      '히힛, 편지 속에 몰래 장난 숨겨놨지? 다 찾았다!',
+      '리락쿠마 자는 사이에 내가 제일 먼저 읽었지롱~',
+      '편지 받고 신나서 데굴데굴 굴렀어요! 또 굴러야지!',
+      '다음 편지엔 수수께끼 내줘요! 내가 다 맞힐 거야!',
+      '우헤헤, 비밀 하나! …나 편지 받는 거 완전 좋아해!',
+    ],
+    kiiroitori: [
+      '편지 잘 받았어요. 글씨가 참 야무지네요!',
+      '짹짹! 답장은 깔끔하게 정리해서 보내드릴게요.',
+      '고마워요. 저금통에 소중히 넣어둘게요 (편지를?)',
+      '리락쿠마는 또 자고 있네요… 제가 대신 답장할게요. 짹!',
+      '편지 받은 김에 방도 쓸고 마음도 정리했어요. 뿌듯!',
+      '한 자 한 자 정성이 느껴져요. 저도 야무지게 답할게요!',
+      '오늘 10원 저금했어요. 당신 편지는 100원만큼 소중해요!',
+      '짹짹, 부지런한 하루 보내요! 다음 편지도 기다릴게요.',
+    ],
+    chairoikoguma: [
+      '헤헤… 편지 받아서 사진 찍어뒀어요! 찰칵-',
+      '와아~ 고마워요! 곱슬 귀가 쫑긋 섰어요!',
+      '막내라 편지 받으니 너무 신나요! 또 와줘요 ♡',
+      '편지랑 같이 찰칵! 추억 앨범에 붙여둘래요.',
+      '우와, 나한테도 편지가… 심장이 콩닥콩닥 두근두근!',
+      '궁금한 게 많아요! 다음엔 답장에 질문 적어가도 돼요?',
+      '곱슬 귀 쫑긋! 좋은 냄새 나는 편지 같아요. 헤헤',
+      '찰칵찰칵! 오늘 제일 행복한 순간으로 저장 완료예요!',
+    ],
+  };
+
+  pad(n, len) { let s = String(n); while (s.length < len) s = '0' + s; return s; }
+  charById(id) { return this.CHARS.find(c => c.id === id) || this.CHARS[0]; }
+  faceFor(kr) { const c = this.CHARS.find(x => x.kr === kr); return c ? c.face : this.CHARS[0].face; }
+
+  // ── 백엔드 API 연동 ─────────────────────────────────────────────
+  async api(method, url, body) {
+    const opts = { method, headers: {} };
+    if (body !== undefined) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+    const res = await fetch(url, opts);
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || '요청에 실패했어요.');
+    return data;
+  }
+  fmtTime(iso) { const d = new Date(iso); return (d.getMonth() + 1) + '.' + d.getDate(); }
+
+  async loadLetters(page) {
+    try {
+      const r = await this.api('GET', '/api/letters?page=' + (page + 1));
+      const letters = r.items.map(it => ({ id: it.id, to: it.recipient, text: it.message, time: this.fmtTime(it.created_at) }));
+      this.setState({ letters, boardPage: r.page - 1, letterPages: r.totalPages, letterTotal: r.total });
+    } catch (e) { console.error('편지 불러오기 실패', e); }
+  }
+
+  async loadGuests() {
+    try {
+      const r = await this.api('GET', '/api/guestbook');
+      const guests = r.items.map(g => ({ id: g.id, name: g.name, text: g.message, time: this.fmtTime(g.created_at), face: g.face }));
+      this.setState({ guests });
+    } catch (e) { console.error('방명록 불러오기 실패', e); }
+  }
+
+  async countVisit() {
+    try {
+      const first = !localStorage.getItem('kuma_visited');
+      const r = await this.api(first ? 'POST' : 'GET', '/api/visits');
+      if (first) localStorage.setItem('kuma_visited', '1');
+      this.setState({ visits: r.total });
+    } catch (e) { console.error('방문자수 불러오기 실패', e); }
+  }
+
+  showReply(reply) {
+    clearTimeout(this._rt1); clearTimeout(this._rt2); clearTimeout(this._rt3);
+    this.setState({ reply, replyOpacity: 1 });
+    this._rt1 = setTimeout(() => this.setState({ replyOpacity: 0 }), 3000);
+    this._rt2 = setTimeout(() => this.setState({ reply: null }), 3450);
+  }
+  dismissReply() {
+    clearTimeout(this._rt1); clearTimeout(this._rt2); clearTimeout(this._rt3);
+    this.setState({ replyOpacity: 0 });
+    this._rt3 = setTimeout(() => this.setState({ reply: null }), 280);
+  }
+
+  renderVals() {
+    const tab = this.state.tab;
+    const go = (t) => () => { this.setState({ tab: t }); window.scrollTo({ top: 0 }); };
+    const mk = (id, label) => ({
+      label, go: go(id),
+      bg: tab === id ? '#fffaf5' : '#ffddec',
+      fg: tab === id ? '#e8568f' : '#cf90ac',
+      z: tab === id ? '2' : '1',
+      pad: tab === id ? '16px 11px' : '13px 8px',
+      ml: tab === id ? '-3px' : '2px',
+    });
+
+    // letter recipient picks
+    const lr = this.state.letterRecipient;
+    const letterPicks = this.CHARS.map(c => ({
+      kr: c.kr, faceEl: React.createElement('img', { src: c.img, alt: '', style: { width: '24px', height: '24px', objectFit: 'contain' } }),
+      bg: lr === c.id ? this.THEME[c.id].soft : '#faf6f0',
+      fg: lr === c.id ? this.THEME[c.id].strong : '#b3a596',
+      border: lr === c.id ? this.THEME[c.id].mid : '#ece0d2',
+      pick: () => this.setState({ letterRecipient: c.id }),
+    }));
+
+    // gift recipient picks
+    const gr = this.state.giftRecipient;
+    const gsel = this.THEME[gr];
+    const giftPicks = this.CHARS.map(c => ({
+      kr: c.kr, faceEl: React.createElement('img', { src: c.face, alt: '', style: { width: '100%', height: '100%', objectFit: 'contain' } }),
+      tabBg: gr === c.id ? gsel.soft : '#f3ece2',
+      tabFg: gr === c.id ? gsel.strong : '#b3a596',
+      tabPad: gr === c.id ? '9px 14px 11px' : '7px 14px 9px',
+      tabZ: gr === c.id ? '2' : '1',
+      pick: () => this.setState({ giftRecipient: c.id, giftReply: null, reacting: false }),
+    }));
+
+    const cat = this.GIFT_CATALOG[this.state.giftRecipient] || [];
+    const gifts = cat.map(item => ({
+      name: item.name,
+      bg: gsel.soft, border: gsel.mid, fg: gsel.strong,
+      pick: () => this.giveGift(item),
+    }));
+
+    const reply = this.state.reply;
+    const greply = this.state.giftReply;
+
+    // letter board (서버 페이지네이션 — this.state.letters 는 이미 현재 페이지)
+    const pageCount = Math.max(1, this.state.letterPages);
+    const page = this.state.boardPage;
+    const pageLetters = this.state.letters.map((l, i) => ({
+      faceEl: React.createElement('img', { src: this.faceFor(l.to), alt: '', style: { width: '84%', height: '84%', objectFit: 'contain' } }),
+      text: l.text, time: l.time,
+      rot: (((page * 18 + i) * 41) % 9 - 4) + 'deg',
+      open: this.state.openNote === l.id,
+      isMine: !!this.state.mine[l.id],
+      toggle: () => this.setState(s => ({ openNote: s.openNote === l.id ? null : l.id })),
+      del: () => this.deleteLetter(l.id),
+    }));
+    const pages = Array.from({ length: pageCount }, (_, p) => ({
+      n: p + 1,
+      go: () => { this.setState({ openNote: null }); this.loadLetters(p); },
+      bg: p === page ? '#ff8fc0' : '#ffffff',
+      fg: p === page ? '#ffffff' : '#d4799f',
+    }));
+
+    return {
+      menu: [
+        mk('home', '홈'),
+        mk('guest', '방명록'),
+        mk('gift', '선물하기'),
+        mk('letter', '편지쓰기'),
+        mk('gallery', '방 구경'),
+      ],
+      showHome: tab === 'home',
+      showCharacters: tab === 'characters',
+      showLetter: tab === 'letter',
+      showGift: tab === 'gift',
+      showGallery: tab === 'gallery',
+      showGuest: tab === 'guest',
+      showFortune: tab === 'fortune',
+      goCharacters: go('characters'),
+      goLetter: go('letter'),
+      goGift: go('gift'),
+
+      // per-character theme inside 편지쓰기 / 선물하기 panels
+      letterHead: this.THEME[this.state.letterRecipient].strong,
+      letterSoft: this.THEME[this.state.letterRecipient].soft,
+      letterMid: this.THEME[this.state.letterRecipient].mid,
+      letterStrong: this.THEME[this.state.letterRecipient].strong,
+      letterDeep: this.THEME[this.state.letterRecipient].deep,
+      giftHead: this.THEME[this.state.giftRecipient].strong,
+      giftSoft: this.THEME[this.state.giftRecipient].soft,
+      giftMid: this.THEME[this.state.giftRecipient].mid,
+      giftStrong: this.THEME[this.state.giftRecipient].strong,
+      giftShadow: this.THEME[this.state.giftRecipient].shadow,
+
+      // guestbook
+      guests: this.state.guests.map(g => ({
+        name: g.name, text: g.text, time: g.time,
+        isMine: !!this.state.guestMine[g.id],
+        faceEl: React.createElement('img', { src: g.face, alt: '', style: { width: '84%', height: '84%', objectFit: 'contain' } }),
+        del: () => this.deleteGuest(g.id),
+      })),
+      noGuests: this.state.guests.length === 0,
+      guestNameRef: (el) => { this._guestNameEl = el; },
+      guestTextRef: (el) => { this._guestTextEl = el; },
+      onGuestKey: (e) => { if (e.key === 'Enter' && !e.nativeEvent.isComposing && e.keyCode !== 229) this.addGuest(); },
+      addGuest: () => this.addGuest(),
+
+      // fortune
+      fortuneGrade: this.FORTUNES[this.state.fortuneIdx].g,
+      fortuneText: this.FORTUNES[this.state.fortuneIdx].t,
+      rollFortune: () => this.setState(s => ({ fortuneIdx: (s.fortuneIdx + 1 + Math.floor(Math.random() * (this.FORTUNES.length - 1))) % this.FORTUNES.length })),
+      wordText: this.WORDS[this.state.wordIdx],
+      rollWord: () => this.setState(s => ({ wordIdx: (s.wordIdx + 1 + Math.floor(Math.random() * (this.WORDS.length - 1))) % this.WORDS.length })),
+
+      characters: this.CHARS.map(c => Object.assign({}, c, { avatarEl: React.createElement('img', { src: c.img, alt: c.kr, style: { width: '86%', height: '86%', objectFit: 'contain' } }) })),
+      gallery: this.GALLERY.map(r => Object.assign({}, r, { imgEl: React.createElement('img', { src: r.src, alt: 'room', style: { width: '100%', display: 'block', borderRadius: '10px', imageRendering: 'pixelated', border: '2px solid #ffc2dc' } }) })),
+      updates: this.UPDATES,
+
+      show0: this.state.featuredIdx === 0 ? 'block' : 'none',
+      show1: this.state.featuredIdx === 1 ? 'block' : 'none',
+      show2: this.state.featuredIdx === 2 ? 'block' : 'none',
+      show3: this.state.featuredIdx === 3 ? 'block' : 'none',
+      show4: this.state.featuredIdx === 4 ? 'block' : 'none',
+      show5: this.state.featuredIdx === 5 ? 'block' : 'none',
+      show6: this.state.featuredIdx === 6 ? 'block' : 'none',
+      show7: this.state.featuredIdx === 7 ? 'block' : 'none',
+      show8: this.state.featuredIdx === 8 ? 'block' : 'none',
+      show9: this.state.featuredIdx === 9 ? 'block' : 'none',
+      show10: this.state.featuredIdx === 10 ? 'block' : 'none',
+      show11: this.state.featuredIdx === 11 ? 'block' : 'none',
+      show12: this.state.featuredIdx === 12 ? 'block' : 'none',
+      show13: this.state.featuredIdx === 13 ? 'block' : 'none',
+      featuredCap: this.GALLERY[this.state.featuredIdx].cap,
+      shuffleFeatured: () => this.setState(s => {
+        let n = s.featuredIdx;
+        if (this.GALLERY.length > 1) { while (n === s.featuredIdx) n = Math.floor(Math.random() * this.GALLERY.length); }
+        return { featuredIdx: n };
+      }),
+
+      counterDigits: this.pad(this.state.visits, 6).split(''),
+
+      bgmIcon: this.state.bgmOn ? '⏸' : '▶',
+      bgmLabel: this.state.bgmOn ? '재생 중 ♪' : '눌러서 재생',
+      noteSpin: this.state.bgmOn ? 'inline' : 'none',
+      toggleBgm: () => this.setState(s => ({ bgmOn: !s.bgmOn })),
+
+      // letter
+      letterPicks,
+      letterText: this.state.letterText,
+      onLetterChange: (e) => this.setState({ letterText: e.target.value }),
+      sendLetter: () => this.sendLetter(),
+      lettersSent: this.state.lettersSent,
+      pageLetters: pageLetters,
+      pages: pages,
+      showPager: pageCount > 1,
+      letterCount: this.state.letterTotal,
+      noLetters: this.state.letterTotal === 0,
+      letterReply: !!reply,
+      replyOpacity: this.state.replyOpacity,
+      dismissReply: () => this.dismissReply(),
+      replyBg: this.THEME[this.state.letterRecipient].soft, replyBorder: this.THEME[this.state.letterRecipient].mid, replyFg: this.THEME[this.state.letterRecipient].strong,
+      replyEl: reply ? React.createElement('img', { src: reply.img, alt: '', style: { width: '90px', height: '90px', objectFit: 'contain', display: 'block' } }) : null,
+      replyName: reply ? reply.name : '',
+      replyText: reply ? reply.text : '',
+
+      // gift
+      giftPicks,
+      gifts,
+      giftReply: !!greply,
+      giftReplyEmoji: greply ? greply.emoji : '',
+      giftReplyImg: greply ? greply.img : '',
+      giftReplyName: greply ? greply.name : '',
+      giftReplyText: greply ? greply.text : '',
+      giftStageEl: React.createElement('img', { src: (greply ? (greply.type === 'good' ? this.charById(this.state.giftRecipient).react_good : this.charById(this.state.giftRecipient).react_bad) : this.charById(this.state.giftRecipient).idle), alt: '', style: { width: '152px', height: '152px', objectFit: 'contain', display: 'block', filter: 'drop-shadow(0 4px 3px rgba(0,0,0,.12))' } }),
+      stageAnim: this.state.reacting ? this.REACT[greply ? greply.type : 'good'].anim : 'kumaBob 2.8s ease-in-out infinite',
+      bubbleBg: this.REACT[greply ? greply.type : 'good'].bg,
+      bubbleBorder: this.REACT[greply ? greply.type : 'good'].bd,
+      bubbleFg: this.REACT[greply ? greply.type : 'good'].fg,
+      giftReactLabel: this.REACT[greply ? greply.type : 'good'].label,
+      giftOpacity: this.state.giftOpacity,
+      showDropHint: !greply,
+    };
+  }
+
+  async sendLetter() {
+    const txt = (this.state.letterText || '').trim();
+    const c = this.charById(this.state.letterRecipient);
+    if (!txt) {
+      this.showReply({ img: c.face, name: c.kr, text: '앗, 편지가 비어있어요! 한 글자라도 적어주면 기뻐할 거예요 ♡' });
+      return;
+    }
+    try {
+      // 서버에 저장하고, 서버가 준 비밀 삭제키를 내 브라우저에만 보관 (남의 편지는 못 지움)
+      const r = await this.api('POST', '/api/letters', { recipient: c.kr, message: txt });
+      const mine = { ...this.state.mine, [r.id]: r.deleteToken };
+      localStorage.setItem('kuma_mine', JSON.stringify(mine));
+      const n = this.state.lettersSent + 1;
+      localStorage.setItem('kuma_letters', String(n));
+      this.setState({ lettersSent: n, letterText: '', mine });
+      await this.loadLetters(0); // 최신 편지가 보이도록 1페이지로
+    } catch (e) {
+      this.showReply({ img: c.face, name: c.kr, text: '앗, 편지를 못 보냈어요. 잠시 후 다시 시도해줘요! (' + e.message + ')' });
+      return;
+    }
+    const opts = this.LETTER_REPLIES[c.id];
+    const text = opts[Math.floor(Math.random() * opts.length)];
+    this.showReply({ img: c.face, name: c.kr, text });
+  }
+
+  async deleteLetter(id) {
+    const token = this.state.mine[id];
+    if (!token) return; // 삭제키 없음 → 내 편지가 아니므로 삭제 불가
+    try {
+      await this.api('DELETE', '/api/letters/' + id, { deleteToken: token });
+    } catch (e) { console.error('편지 삭제 실패', e); return; }
+    const mine = { ...this.state.mine };
+    delete mine[id];
+    localStorage.setItem('kuma_mine', JSON.stringify(mine));
+    this.setState({ mine, openNote: null });
+    await this.loadLetters(this.state.boardPage);
+  }
+
+  async addGuest() {
+    const text = ((this._guestTextEl && this._guestTextEl.value) || '').trim();
+    if (!text) return;
+    const name = ((this._guestNameEl && this._guestNameEl.value) || '').trim() || '익명의 손님';
+    const faces = ['assets/char_trail2.png', 'assets/char_trail4.png', 'assets/char_kitori.png', 'assets/char_koguma.png'];
+    const face = faces[Math.floor(Math.random() * faces.length)];
+    let r;
+    try {
+      r = await this.api('POST', '/api/guestbook', { name, message: text, face });
+    } catch (e) { console.error('방명록 작성 실패', e); return; }
+    const guestMine = { ...this.state.guestMine, [r.id]: r.deleteToken };
+    localStorage.setItem('kuma_guest_mine', JSON.stringify(guestMine));
+    if (this._guestNameEl) this._guestNameEl.value = '';
+    if (this._guestTextEl) this._guestTextEl.value = '';
+    this.setState({ guestMine });
+    await this.loadGuests();
+  }
+
+  async deleteGuest(id) {
+    const token = this.state.guestMine[id];
+    if (!token) return; // 내가 쓴 글만 삭제
+    try {
+      await this.api('DELETE', '/api/guestbook/' + id, { deleteToken: token });
+    } catch (e) { console.error('방명록 삭제 실패', e); return; }
+    const guestMine = { ...this.state.guestMine };
+    delete guestMine[id];
+    localStorage.setItem('kuma_guest_mine', JSON.stringify(guestMine));
+    this.setState({ guestMine });
+    await this.loadGuests();
+  }
+
+  giveGift(item) {
+    const c = this.charById(this.state.giftRecipient);
+    clearTimeout(this._reactT); clearTimeout(this._gt1); clearTimeout(this._gt2);
+    this.setState({ giftReply: { name: c.kr, text: item.text, type: item.type }, reacting: true, giftOpacity: 1 });
+    this._reactT = setTimeout(() => this.setState({ reacting: false }), 900);
+    this._gt1 = setTimeout(() => this.setState({ giftOpacity: 0 }), 2600);
+    this._gt2 = setTimeout(() => this.setState({ giftReply: null, reacting: false, giftOpacity: 1 }), 3050);
+  }
+}
+</script>
+</body>
+</html>

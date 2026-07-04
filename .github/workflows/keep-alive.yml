@@ -1,0 +1,19 @@
+name: keep-alive
+
+# Render 무료 서버가 잠들지 않도록 10분마다 사이트에 접속(핑)해요.
+# GitHub가 대신 실행해줘서 내 컴퓨터를 켜둘 필요가 없어요.
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # 10분마다
+  workflow_dispatch:          # 필요하면 GitHub에서 수동 실행도 가능
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 사이트 깨우기
+        run: |
+          echo "핑 보내는 중..."
+          curl -sS -m 60 https://rilakkuma-world.onrender.com/api/health || true
+          echo ""
+          echo "완료"

@@ -8,3 +8,6 @@ data/*.db-shm
 
 # 로컬 전용
 .claude/settings.local.json
+
+# 백업 파일(로컬 보관)
+backups/

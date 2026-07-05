@@ -45,7 +45,7 @@ async function makePostgres() {
     key   TEXT PRIMARY KEY,
     value INTEGER NOT NULL
   )`);
-  await q(`INSERT INTO stats (key, value) VALUES ('total_visits', 13420)
+  await q(`INSERT INTO stats (key, value) VALUES ('total_visits', 0)
            ON CONFLICT (key) DO NOTHING`);
 
   return {
@@ -87,6 +87,11 @@ async function makePostgres() {
         `UPDATE stats SET value = value + 1 WHERE key = 'total_visits' RETURNING value`
       )).rows[0].value;
     },
+    async setVisits(n) {
+      return (await q(
+        `UPDATE stats SET value = $1 WHERE key = 'total_visits' RETURNING value`, [n]
+      )).rows[0].value;
+    },
   };
 }
 
@@ -115,7 +120,7 @@ async function makeSqlite() {
     name TEXT NOT NULL, message TEXT NOT NULL, face TEXT NOT NULL,
     delete_token TEXT NOT NULL, created_at TEXT NOT NULL)`);
   db.exec(`CREATE TABLE IF NOT EXISTS stats (key TEXT PRIMARY KEY, value INTEGER NOT NULL)`);
-  db.exec(`INSERT OR IGNORE INTO stats (key, value) VALUES ('total_visits', 13420)`);
+  db.exec(`INSERT OR IGNORE INTO stats (key, value) VALUES ('total_visits', 0)`);
 
   return {
     async countLetters() { return db.prepare('SELECT COUNT(*) AS n FROM letters').get().n; },
@@ -141,6 +146,10 @@ async function makeSqlite() {
     async getVisits() { return db.prepare(`SELECT value FROM stats WHERE key = 'total_visits'`).get().value; },
     async incVisits() {
       db.prepare(`UPDATE stats SET value = value + 1 WHERE key = 'total_visits'`).run();
+      return db.prepare(`SELECT value FROM stats WHERE key = 'total_visits'`).get().value;
+    },
+    async setVisits(n) {
+      db.prepare(`UPDATE stats SET value = ? WHERE key = 'total_visits'`).run(n);
       return db.prepare(`SELECT value FROM stats WHERE key = 'total_visits'`).get().value;
     },
   };

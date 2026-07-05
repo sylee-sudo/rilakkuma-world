@@ -128,6 +128,16 @@ app.post('/api/visits', wrap(async (req, res) => {
   res.json({ total: await db.incVisits() });
 }));
 
+// 방문자수 리셋 (관리자 마스터 키 필요) — body {value} 없으면 0으로
+app.post('/api/visits/reset', wrap(async (req, res) => {
+  const adminKey = req.get('x-admin-key') || req.body?.adminKey;
+  if (!adminKey || adminKey !== ADMIN_KEY) {
+    return res.status(403).json({ error: '관리자 키가 필요해요.' });
+  }
+  const value = Number.isInteger(req.body?.value) ? req.body.value : 0;
+  res.json({ total: await db.setVisits(value) });
+}));
+
 // ── 헬스체크 ────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 

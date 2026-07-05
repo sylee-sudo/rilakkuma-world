@@ -378,7 +378,6 @@ class Component extends DCLogic {
   state = {
     tab: 'home',
     featuredIdx: 0,
-    bgmOn: false,
     letterRecipient: 'rilakkuma',
     letterText: '',
     reply: null,
@@ -813,11 +812,6 @@ class Component extends DCLogic {
       }),
 
       counterDigits: this.pad(this.state.visits, 6).split(''),
-
-      bgmIcon: this.state.bgmOn ? '⏸' : '▶',
-      bgmLabel: this.state.bgmOn ? '재생 중 ♪' : '눌러서 재생',
-      noteSpin: this.state.bgmOn ? 'inline' : 'none',
-      toggleBgm: () => this.setState(s => ({ bgmOn: !s.bgmOn })),
 
       // letter
       letterPicks,

@@ -655,9 +655,8 @@ class Component extends DCLogic {
 
   async countVisit() {
     try {
-      const first = !localStorage.getItem('kuma_visited');
-      const r = await this.api(first ? 'POST' : 'GET', '/api/visits');
-      if (first) localStorage.setItem('kuma_visited', '1');
+      // 새로고침(방문)할 때마다 +1 (페이지 조회수 방식)
+      const r = await this.api('POST', '/api/visits');
       this.setState({ visits: r.total });
     } catch (e) { console.error('방문자수 불러오기 실패', e); }
   }
